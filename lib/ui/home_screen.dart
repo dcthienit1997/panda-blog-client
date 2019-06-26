@@ -1,4 +1,5 @@
 import 'package:cdhtttfrontend/ui/assets/colors.dart';
+import 'package:cdhtttfrontend/ui/widget/appbar.dart';
 import 'package:cdhtttfrontend/ui/widget/posts_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -24,11 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _bodyContent = new PostsScrollListView();
     // _home widget
     _home = new Scaffold(
-      appBar: new AppBar(
-        centerTitle: true,
-        title: new Text("Appbar demo"),
-        backgroundColor: Colors.amber,
-      ),
+//      appBar: PandaAppbar.buildAppbar(context, "Panda's blog"),
       body: _bodyContent,
 
     );
@@ -39,7 +36,27 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: PandaColors.backgroundNormal,
-      body: _home,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              expandedHeight: 150,
+              floating: true,
+              pinned: true,
+              snap: false,
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: true,
+                title: Text("Panda's blog"),
+                background: Image.asset('assets/imgs/img0.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ];
+        },
+        body: _home,
+      ),
+//      body: _home,
     );
   }
 }

@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:cdhtttfrontend/model/post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 class CardPost extends StatelessWidget {
 
@@ -11,57 +15,127 @@ class CardPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    List<String> imgs = new List<String>();
+    imgs.add("assets/imgs/img0.jpg");
+    imgs.add("assets/imgs/img1.jpg");
+    imgs.add("assets/imgs/img2.jpg");
+    imgs.add("assets/imgs/img3.jpg");
+    imgs.add("assets/imgs/img4.jpg");
+    imgs.add("assets/imgs/img5.jpg");
+    imgs.add("assets/imgs/img6.jpg");
+    imgs.add("assets/imgs/img7.jpg");
+    imgs.add("assets/imgs/img8.jpg");
+    imgs.add("assets/imgs/img9.jpg");
+    imgs.add("assets/imgs/img10.jpg");
+    imgs.add("assets/imgs/img11.jpg");
+    imgs.add("assets/imgs/img12.jpg");
+    imgs.add("assets/imgs/img13.jpg");
+    Random rd = new Random();
+    String randomImg() {
+      return imgs.elementAt(rd.nextInt(12));
+    }
+    
     // TODO: implement build
     final card_post = Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Card(
+        elevation: 0,
         child: Container(
-          height: 350,
+          height: 300,
           width: MediaQuery.of(context).size.width * 0.85,
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.red,
-                  offset: Offset(0.0, 1.5),
-                  blurRadius: 4.5,
-                ),
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(11)),
-          ),
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.all(20),
                 width: double.infinity,
-                height: 85,
+                height: 175,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(11)),
-                  color: Colors.blue,
-                ),
-                child: Text(
-                  post.title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      randomImg(),
+                    ),
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      offset: Offset(6.0, 7.0),
+                      blurRadius: 13,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.all(Radius.circular(17)),
                 ),
+
               ),
               Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.fromLTRB(8, 16, 20, 8),
                   width: double.infinity,
                   child: Text(
-                      post.content,
+                      post.title.toString(),
                       style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 14,
+                        color: Colors.black,
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
                       ),
+                    textAlign: TextAlign.left,
                   )
               ),
-              Text(post.view.toString()),
-              Text(post.clap.toString()),
-              Text(post.date.toString()),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                          child: Text(post.view.toString(),
+                            style: TextStyle(
+                              fontSize: 17
+                            ),
+                          ),
+                        ),
+                        Icon(Icons.remove_red_eye,
+                          color: Color(0xff5e5e5e),
+                          size: 17,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                          child: Text(post.clap.toString(),
+                            style: TextStyle(
+                                fontSize: 17
+                            ),
+                          ),
+                        ),
+                        Icon(FontAwesomeIcons.signLanguage,
+                        color: Color(0xff5e5e5e),
+                        size: 17,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                      child: Text(DateFormat.yMMMMEEEEd().format(post.date),
+                        style: TextStyle(
+                            fontSize: 13
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
 
             ],
           ),

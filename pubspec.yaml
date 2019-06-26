@@ -30,6 +30,10 @@ dependencies:
 
   http: ^0.12.0+2
 
+  font_awesome_flutter: ^8.4.0
+
+  intl: ^0.15.8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -53,6 +57,21 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+  assets:
+    - assets/imgs/img0.jpg
+    - assets/imgs/img1.jpg
+    - assets/imgs/img2.jpg
+    - assets/imgs/img3.jpg
+    - assets/imgs/img4.jpg
+    - assets/imgs/img5.jpg
+    - assets/imgs/img6.jpg
+    - assets/imgs/img7.jpg
+    - assets/imgs/img8.jpg
+    - assets/imgs/img9.jpg
+    - assets/imgs/img10.jpg
+    - assets/imgs/img11.jpg
+    - assets/imgs/img12.jpg
+    - assets/imgs/img13.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
@@ -77,5 +96,6 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
