@@ -17,7 +17,8 @@ class PostController {
 
     return await client
 //        .get("https://jsonplaceholder.typicode.com/posts")
-        .get("http://192.168.0.104:8080/posts", headers: headers)
+//        .get("http://192.168.0.104:8080/posts", headers: headers)
+        .get("http://10.0.140.106:8080/posts", headers: headers)
         .then((response) {
           if (response.statusCode < 200 && response.statusCode >= 400) {
             return null;

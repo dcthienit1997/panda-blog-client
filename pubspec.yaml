@@ -96,6 +96,11 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: DancingScript
+      fonts:
+      - asset: assets/fonts/DancingScript-Bold.ttf
+
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages

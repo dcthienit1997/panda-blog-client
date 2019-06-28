@@ -6,7 +6,7 @@ class PandaAppbar {
       preferredSize: Size(double.infinity, 80),
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xffffffff).withOpacity(0.0),
+          color: Colors.white.withOpacity(0.5),
         ),
         child: AppBar(
           backgroundColor: Colors.white.withOpacity(0.5),
@@ -15,7 +15,9 @@ class PandaAppbar {
           title: Text(
             title,
             style: TextStyle(
-              color: Color(0xff3e3e3e),
+              color: Color(0xff6e6e6e),
+              fontFamily: 'DancingScript',
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

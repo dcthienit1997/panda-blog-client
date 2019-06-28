@@ -42,8 +42,7 @@ class PostsScrollListViewState extends State<PostsScrollListView> {
         ),
       );
     } else {
-//      if (_isError || _posts == null || _posts.isEmpty) {
-      if (false) {
+      if (_isError || _posts == null || _posts.isEmpty) {
         if (_isError) {
           widget = new Center(
             child: new Text("Error"),
@@ -59,44 +58,41 @@ class PostsScrollListViewState extends State<PostsScrollListView> {
             child: new Text("Posts is empty"),
           );
         }
-//        widget = new Center(
-//          child: new Text("Oops..! Error fetch server data."),
-//        );
       } else {
         widget = Center(
-          child: FutureBuilder<List<Widget>>(
-            future: getPosts(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Scrollbar(
-                  child: ReorderableListView(
-                    padding: EdgeInsets.all(16.0),
-                    children: snapshot.data,
+            child: FutureBuilder<List<Widget>>(
+              future: getPosts(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Scrollbar(
+                    child: ReorderableListView(
+                      padding: EdgeInsets.fromLTRB(16, 100, 16, 16),
+                      children: snapshot.data,
 //                    children: snapshot.data.map<Widget>(builListPost).toList(),
-                    onReorder: (oldIndex, newIndex) {
-                      setState(() {
-                        if (newIndex > snapshot.data.length) newIndex = snapshot.data.length;
-                        if (newIndex > oldIndex) {
-                          newIndex -= 1;
-                        }
-                        final Widget widget = snapshot.data.removeAt(oldIndex);
-                        print("Length when remoreAt: ");
-                        print(snapshot.data.length);
-                        snapshot.data.insert(newIndex, widget);
-                        print("Length when insert: ");
-                        print(snapshot.data.length);
-                        print("reorder");
-                      });
-                    },
-                  ),
-                );
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
-              // By default, show a loading spinner
-              return CircularProgressIndicator();
-            },
-          ),
+                      onReorder: (oldIndex, newIndex) {
+                        setState(() {
+                          if (newIndex > snapshot.data.length) newIndex = snapshot.data.length;
+                          if (newIndex > oldIndex) {
+                            newIndex -= 1;
+                          }
+                          final Widget widget = snapshot.data.removeAt(oldIndex);
+                          print("Length when remoreAt: ");
+                          print(snapshot.data.length);
+                          snapshot.data.insert(newIndex, widget);
+                          print("Length when insert: ");
+                          print(snapshot.data.length);
+                          print("reorder");
+                        });
+                      },
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                // By default, show a loading spinner
+                return CircularProgressIndicator();
+              },
+            ),
         );
       }
     }
